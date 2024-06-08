@@ -22,7 +22,7 @@ public class StackPerso<E> {
         }
     }
 
-    public E push(E elem){
+    public E push(E elem){ //A REGLER HYPER IMPORTANT
         if (top==arr.length-1){
             E[] newArr = (E[]) new Object[(arr.length)*2];
             for(int i=0; i<top;i++){
@@ -45,6 +45,26 @@ public class StackPerso<E> {
         arr[top]=null;
         top--;
         return temp;
+    }
+
+    public E peek() {
+        if (isEmpty()) {
+            System.out.println("The stack is empty");
+            return null;
+        }
+        return arr[top];
+    }
+
+    public void display()
+    {
+        System.out.println("-------------------START HERE----------------------");
+        for (int i=0;i<this.size();i++)
+        {
+
+            System.out.println(arr[i]);
+
+        }
+        System.out.println("-------------------END HERE----------------------");
     }
 
 }
