@@ -1,0 +1,42 @@
+
+a) Here is the pseudocode for evaluating the operations:
+
+------------------------------START------------------------------------------------------
+Algorithm evaluateExpression(S)
+
+input: S the arithmetic expression in string format
+output: the result of the arithmetic expression in
+
+valstk <-- empty stack
+opstk <-- empty stack
+
+arrayTokens = s.split()
+for i <-- 0 to arrayTokens.length -1 do
+    token <-- arrayTokens[i]
+     if token isNumeric then
+        valstk.push(token)
+     else if token = "(" then
+        opstk.push(token)
+     else if token = ")" then
+        while opStk.size >0 && opStk.peek() != "(" do
+            performOperation()
+        opStk.pop();
+     else if token isOperator then
+        op = token
+        while opStk.size >0 && precedence(opStk.peek()) <= precedence(op) && opStk.peek() != "(" do
+            performOperation()
+        opStk.push(op);
+while opStk.size() > 0 do
+    performOperation()
+return valStk.pop()
+
+------------------------------END------------------------------------------------------
+
+b)
+the time complexity is: O(n) since there is a while loop that evaluates the n tokens (digits and operators) that will
+all be in the stack eventually
+
+the space complexity is: O(n) since the space complexity is determined by the space used by the stacks valStk and opStk.
+since they both can store up to n elements it is O(n)
+
+c) test logs are input.txt and output.txt

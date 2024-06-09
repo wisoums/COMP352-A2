@@ -22,10 +22,10 @@ public class StackPerso<E> {
         }
     }
 
-    public E push(E elem){ //A REGLER HYPER IMPORTANT
+    public E push(E elem){
         if (top==arr.length-1){
             E[] newArr = (E[]) new Object[(arr.length)*2];
-            for(int i=0; i<top;i++){
+            for(int i=0; i<top+1;i++){
                 newArr[i]=arr[i];
             }
             arr=newArr;
@@ -57,14 +57,19 @@ public class StackPerso<E> {
 
     public void display()
     {
-        System.out.println("-------------------START HERE----------------------");
-        for (int i=0;i<this.size();i++)
+        if(isEmpty())
         {
-
-            System.out.println(arr[i]);
-
+            System.out.println("nooo");
         }
-        System.out.println("-------------------END HERE----------------------");
+        else {
+            System.out.println("-------------------START HERE----------------------");
+            for (int i = 0; i < this.size(); i++) {
+
+                System.out.println(arr[i]);
+
+            }
+            System.out.println("-------------------END HERE----------------------");
+        }
     }
 
 }

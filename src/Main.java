@@ -1,8 +1,8 @@
 import java.io.*;
 public class Main {
 
-    static StackPerso<Integer> valStk = new StackPerso<>(45);
-    static StackPerso<String> opStk = new StackPerso<>(45);
+    static StackPerso<Integer> valStk = new StackPerso<>(5);
+    static StackPerso<String> opStk = new StackPerso<>(5);
 
     public static void main(String[] args) {
 
@@ -18,6 +18,7 @@ public class Main {
         FileWriter writer = new FileWriter(outputFile);
 
         String line;
+        writer.write("Here are the results of the operations: \n");
         while ((line = reader.readLine()) != null) {
             writer.write(line + " = ");
             int result = evaluateExpression(line);
@@ -63,7 +64,6 @@ public class Main {
                 while (opStk.size()>0 && precedence(opStk.peek())<= precedence(op)&& !opStk.peek().equals("("))
                 {
                     performOperation();
-                    System.out.println("oh oh");
                 }
                 opStk.push(op);
             }
@@ -76,6 +76,7 @@ public class Main {
             performOperation();
         }
         return valStk.pop();
+
     }
 
     public static boolean isOperator(String operator)
